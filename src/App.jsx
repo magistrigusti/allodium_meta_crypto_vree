@@ -1,12 +1,14 @@
 
 
-function App() {
+const App = () => {
 
 
   return (
-    <div>
-      App
-    </div>
+    <main>
+      <h1 className="text-5xl text-orange-500 font-bold">
+        Welcome to Allodium
+      </h1>
+    </main>
   )
 }
 
