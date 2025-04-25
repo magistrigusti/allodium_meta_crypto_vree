@@ -1,19 +1,23 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { TiLocationArrowOutline } from "react-icons/ti";
+import { ScrollTrigger } from 'gsap/all';
+import Button from '../Button';
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [loaedVideos, setLoadedVideos] = useState(0);
+  const [loadedVideos, setLoadedVideos] = useState(0);
 
-  const totalVideos = 4;
+  const totalVideos = 3;
   const nextVideoRef = useRef(null);
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
   }
-
   const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
 
   const handleMiniVdClick = () => {
@@ -22,8 +26,69 @@ const Hero = () => {
     setCurrentIndex(upcomingVideoIndex);
   }
 
+  useEffect(() => {
+    if (loadedVideos === totalVideos -1) {
+      setIsLoading(false);
+    }
+  }, [loadedVideos]);  
+
+  useGSAP(() => {
+    if (hasClicked) {
+      gsap.set('#next-video', {visibility: 'visible'});
+
+      gsap.to('#next-video', {
+        transformOrigin: 'center center',
+        scale: 1,
+        width: '100%',
+        height: '100%',
+        duration: 1,
+        ease: 'power1.inOut',
+        onStart: () => nextVideoRef.current.play(),
+      });
+
+      gsap.to('#current-video', {
+        transformOrigin: 'center center',
+        scale: 0,
+        duration: 1.5,
+        ease: 'power1.inOut'
+      });
+    }
+
+  }, {dependecies: [currentIndex], revertOnUpdate: true});
+
+  useGSAP(() => {
+    gsap.set('#video-frame', {
+      clipPath: "polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)",
+      borderRadius: '0 0 40% 10%',
+    });
+
+    gsap.from('#video-frame', {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      borderRadius: '0 0 0 0',
+      ease: 'power1.inOut',
+      scrollTrigger: {
+        trigger: '#video-frame',
+        start: 'center center',
+        end: 'bottom center',
+        scrub: true,
+      }
+    });
+  }, );
+
+  
+
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
+      {isLoading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+          <div className="three-body">
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+          </div>
+        </div>
+      )}
+
       <div id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
@@ -54,9 +119,46 @@ const Hero = () => {
             muted
           />
 
-          <video />
+          <video className="absolute left-0 top-0 size-full object-cover object-center"
+            src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
+            onLoadedData={handleVideoLoad}
+            autoPlay  //all time video playing
+            loop
+            muted
+          />
+        </div>
+
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-orange-300">
+          Allo<b>d</b>ium
+          <span className="text-xs align-super">™</span>
+        </h1>
+
+        <div className="absolute left-0 top-0 z-40 size-full">
+          <div className="mt-24 px-5 sm:px-10">
+            <h1 className="special-font hero-heading text-blue-100">
+              redefi <b>n</b>e
+            </h1>
+
+            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
+              Enter the MetaGame Layer <br/> Unleash the Play Economy
+            </p>
+
+            <Button containerClass="!bg-yellow-300 flex-center gap-1"
+              id="watch"              
+              title="White Paper"          
+              leftIcon={<TiLocationArrowOutline />}
+              onClick={() => window.open(
+                'https://1drv.ms/w/s!AiKa0NRxyZwqi-M3c9qHhLi7Tee8Xw?e=RArw1R',
+                '_blank')}
+            />
+          </div>
         </div>
       </div>
+
+      <h1 className="specialfont hero-heading absolute bottom-5 right-5 text-black">
+        G<b>a</b>ming
+      </h1>
+
     </div>
   )
 };
