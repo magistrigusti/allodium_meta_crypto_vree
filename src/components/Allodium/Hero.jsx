@@ -156,7 +156,8 @@ const Hero = () => {
       </div>
 
       <h1 className="specialfont hero-heading absolute bottom-5 right-5 text-black">
-        G<b>a</b>ming
+        Allo<b>d</b>ium
+        <span className="text-xs align-super">™</span>
       </h1>
 
     </div>
