@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { TiLocationArrowOutline } from "react-icons/ti";
 import Button from './Button';
 
+const navItems = ['Dominum', 'Dominarium', 'Magisterium', 'Mercatus', 'Portal', 'About'];
+
 const Navbar = () => {
   const navContainerRef = useRef(null);
 
@@ -23,8 +25,14 @@ const Navbar = () => {
             />  
           </div>
 
-          <div>
-            
+          <div className="flex h-full items-center">
+            <div className="hidden md:block">
+              {navItems.map((item) => (
+                <a>
+                  {item}
+                </a>
+              ))}
+            </div>
           </div>
         </nav>
       </header>
