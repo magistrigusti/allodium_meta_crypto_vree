@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-
+import React, { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { TiLocationArrowOutline } from "react-icons/ti";
 import Button from './Button';
 
@@ -16,14 +16,25 @@ const navItems = [
 
 const Navbar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIndicatorActive] = useState(false);
+  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
 
   const navContainerRef = useRef(null);
   const audioElementRef = useRef(null);
+  const location = useLocation();
+
 
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev);
+    setIsIndicatorActive((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isAudioPlaying) {
+      audioElementRef.current.play();
+    } else {
+      audioElementRef.current.pause();
+    }
+  }, [isAudioPlaying]);
 
 
   return (
@@ -35,8 +46,13 @@ const Navbar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           <div className="flex items-center gap-7">
             <a href="/">
-              <img className="w-20" src="/allodium/icons/allod_logo.png" path="/" />
+              <img
+                className={`w-20 ${location.pathname === '/' ? 'animate-pulse brightness-125' : ''}`}
+                src="/allodium/icons/allod_logo.png"
+                alt="allod-logo"
+              />
             </a>
+
 
             <Button id="product-button"
               containerClass="bg-blue-50 md:flex hidden items-center 
@@ -47,31 +63,34 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex flex-row items-center">
-              {navItems.map((item) => (
-                <a key={item}  className="nav-hover-btn"
-                  href={item.path}
-                >
-                  <img className="w-20 h-20" src={item.icon} />
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <a key={item.path} href={item.path} className="nav-hover-btn">
+                  <img
+                    src={item.icon}
+                    alt="nav-icon"
+                    className={`w-20 h-20 ${isActive ? 'animate-pulse brightness-125' : ''}`}
+                  />
                 </a>
-              ))}
-          </div>
+              )
+            })}
 
-           <button className="ml-10 flex items-center space-x-0.5"
-            onClick={toggleAudioIndicator}
-           >
+
+            <button className="ml-10 flex items-center space-x-0.5"
+              onClick={toggleAudioIndicator}
+            >
               <audio className="hidden"
                 src="/audio/loop.mp3"
                 ref={audioElementRef}
                 loop
-              >
-                {[1,2,3,4].map((bar) => (
-                  <div className={`indicator-line ${isIndicatorActive ? 'active' : ''}`}
-                    style={{animationDelay: `${bar * 0.1}s`}}
-                    key={bar}
-                  />
-                ))}
-              </audio>
-            </button>   
+              />
+
+              <img className={`w-10 h-10 ${isAudioPlaying ? 'opacity-100' : 'opacity-50'}`}
+                src="/allodium/icons/music.png" alt="music-icon"
+              />
+            </button>
+          </div>
         </nav>
       </header>
     </div>
