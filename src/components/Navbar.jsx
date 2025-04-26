@@ -2,7 +2,15 @@ import React, { useRef } from 'react';
 import { TiLocationArrowOutline } from "react-icons/ti";
 import Button from './Button';
 
-const navItems = ['Dominum', 'Dominarium', 'Magisterium', 'Mercatus', 'Portal', 'About'];
+const navItems = [
+  { path: '/dominum', icon: '/allodium/icons/dom-icon.png' },
+  { path: '/dominarium', icon: '/allodium/icons/allod-link.png' },
+  { path: '/magisterium', icon: '/allodium/icons/allod-link.png' },
+  { path: '/mercatus', icon: '/allodium/icons/allod-link.png' },
+  { path: '/portal', icon: '/allodium/icons/allod-link.png' },
+  { path: '/', icon: '/allodium/icons/allod_logo.png' },
+];
+
 
 const Navbar = () => {
   const navContainerRef = useRef(null);
@@ -28,8 +36,10 @@ const Navbar = () => {
           <div className="flex h-full items-center">
             <div className="hidden md:block">
               {navItems.map((item) => (
-                <a>
-                  {item}
+                <a key={item.path} href={item.path}>
+                  <img className="w-10 h-10"
+                    src={item.icon} alt="nav-icon" 
+                  />
                 </a>
               ))}
             </div>
