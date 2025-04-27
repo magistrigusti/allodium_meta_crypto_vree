@@ -7,6 +7,7 @@ import MagisteriumPage from './pages/MagisteriumPage';
 import MercatusPage from './pages/MercatusPage';
 import PortalPage from './pages/PortalPage';
 
+
 const App = () => {
   return (
     <BrowserRouter>

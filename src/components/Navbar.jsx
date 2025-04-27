@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { TiLocationArrowOutline } from "react-icons/ti";
 import { useWindowScroll } from 'react-use';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+
 import Button from './Button';
 
 const navItems = [
@@ -17,7 +17,7 @@ const navItems = [
 
 const Navbar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [, setIsIndicatorActive] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isNavVisible, setIsNavVisible] = useState(true);
 
@@ -37,6 +37,8 @@ const Navbar = () => {
       setIsNavVisible(true);
       navContainerRef.current.classList.add('floating-nav');
     }
+
+    setLastScrollY(currentScrollY);
   }, [currentScrollY, lastScrollY]);
 
   useEffect(() => {
