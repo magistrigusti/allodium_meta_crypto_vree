@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TiLocationArrowOutline } from "react-icons/ti";
+import { useWindowScroll } from 'react-use';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import Button from './Button';
 
 const navItems = [
@@ -12,16 +15,37 @@ const navItems = [
 
 ];
 
-// const navItems = ['Dominum', 'Dominarium', "Magisterium", "Mercatus", "Portal"]
-
 const Navbar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isNavVisible, setIsNavVisible] = useState(true);
 
   const navContainerRef = useRef(null);
   const audioElementRef = useRef(null);
   const location = useLocation();
+  const { y: currentScrollY } = useWindowScroll();
 
+  useEffect(() => {
+    if (currentScrollY === 0) {
+      setIsNavVisible(true);
+      navContainerRef.current.classList.remove('floating-nav');
+    } else if(currentScrollY > lastScrollY) {
+      setIsNavVisible(false);
+      navContainerRef.current.classList.add('floating-nav');
+    } else if (currentScrollY < lastScrollY) {
+      setIsNavVisible(true);
+      navContainerRef.current.classList.add('floating-nav');
+    }
+  }, [currentScrollY]);
+
+  useEffect(() => {
+    gsap.to(navContainerRef.current, {
+      y: isNavVisible ? 0 : -100,
+      opacity: isNavVisible ? 1 : 0,
+      duration: 0.2,
+    })
+  }, []);
 
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev);
