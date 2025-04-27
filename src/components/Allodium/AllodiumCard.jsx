@@ -1,5 +1,5 @@
 
-const AllodiumCard = ({src, title, description, isCommingSoon, color}) => {
+const AllodiumCard = ({src, title, description, color}) => {
   return (
     <div className="relative size-full">
       <video className="absolute left-0 top-0 size-full object-cover object-center"

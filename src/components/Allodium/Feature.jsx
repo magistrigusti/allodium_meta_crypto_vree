@@ -1,5 +1,6 @@
+import { TiLocationArrowOutline } from "react-icons/ti";
 import AllodiumCard from "./AllodiumCard";
-
+import AllodiumTitle from './AllodiumTitle';
 
 const Feature = () => {
   return (
@@ -30,17 +31,17 @@ const Feature = () => {
         </div>
 
         <div className="grid h-[135vh] grid-cols-2 grid-rows-3 gap-7">
-          <div className="bento-title_1 row-span-1 md;col-span-1 md:row-span-2">
+          <AllodiumTitle className="bento-title_1 row-span-1 md;col-span-1 md:row-span-2">
             <AllodiumCard 
               src="videos/feature-2.mp4 "
-              title={<><b>d o m i n u m</b></>}
+              title={<><b>domium</b></>}
               color="text-blue-700"
               description="An anime and gaming-inspired NFT collection - 
                 the IP primed for expansion."
             />
-          </div>
+          </AllodiumTitle>
 
-          <div className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <AllodiumTitle className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <AllodiumCard 
               src="videos/feature-3.mp4 "
               title={<><b>p o r t a l</b></>}     
@@ -48,9 +49,34 @@ const Feature = () => {
               description="A gamified social hub, adding a new dimension of play 
                 to social interaction for Web3 communities."
             />
-          </div>
+          </AllodiumTitle>
 
-          <
+          <AllodiumTitle className="bento-title_1 me-14 md:col-span-1 md:ms-0">
+            <AllodiumCard 
+              src="videos/feature-4.mp4"
+              title={<><b>alpha</b></>}
+              color="text-blue-300"
+            />
+          </AllodiumTitle>
+
+          <AllodiumTitle className="bento-title_2">
+            <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
+              <h1 className="bento-title special-font max-w-64 text-black">
+                M<b>o</b>re co<b>m</b>ing s<b>o</b>on!
+              </h1>
+
+              <TiLocationArrowOutline className="m-5 scale-[5] self-end" />
+            </div>
+          </AllodiumTitle>
+
+          <AllodiumTitle className="bento-title_2">
+            <video className="size-full object-cover object-center"
+              src="videos/feature-5.mp4"
+              autoPlay
+              muted
+              loop
+            />
+          </AllodiumTitle>
         </div>
       </div>
     </section>
