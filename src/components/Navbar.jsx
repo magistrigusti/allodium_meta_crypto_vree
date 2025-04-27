@@ -37,7 +37,7 @@ const Navbar = () => {
       setIsNavVisible(true);
       navContainerRef.current.classList.add('floating-nav');
     }
-  }, [currentScrollY]);
+  }, [currentScrollY, lastScrollY]);
 
   useEffect(() => {
     gsap.to(navContainerRef.current, {
