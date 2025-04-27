@@ -1,7 +1,7 @@
 
-const Button = ({title, id, rightIcon, leftIcon, containerClass}) => {
+const Button = ({title, id, rightIcon, leftIcon, containerClass, onClick}) => {
   return (
-    <button id={id}
+    <button id={id} onClick={onClick}
       className={`group relative z-10 w-fit cursor-pointer overflow-hidden
         rounded-full bg-violet-50 px-6 py-3 text-black ${containerClass}`}
     >

@@ -1,7 +1,7 @@
 
 import Navbar from '../components/Navbar';
 import Dominum from '../components/Dominum/Dominum';
-import About from '../components/Allodium/About'
+import About from '../components/Dominum/About'
 
 const DominumPage = () => {
   return (

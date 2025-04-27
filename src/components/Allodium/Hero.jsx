@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TiLocationArrowOutline } from "react-icons/ti";
-import { ScrollTrigger } from 'gsap/all';
 import Button from '../Button';
 
 const Hero = () => {
@@ -129,14 +128,14 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-orange-300">
-          <b>Gaming</b>
-          {/* <span className="text-xs align-super">™</span> */}
+          <b>Allodium</b>
+          <span className="text-xs align-super">™</span>
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100">
-               <b>redefi ne</b>
+            <h1 className="special-font hero-heading text-blue-300">
+               <b>Find</b>
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
