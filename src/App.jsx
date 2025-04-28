@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import AllodiumPage from './pages/AllodiumPage'; // ВАЖНО! Импортируем новую страницу
+import AllodiumPage from './pages/AllodiumPage'; 
 import DominumPage from './pages/DominumPage';
 // import DominariumPage from './pages/DominariumPage';
 // import MagisteriumPage from './pages/MagisteriumPage';
