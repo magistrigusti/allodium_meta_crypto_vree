@@ -25,7 +25,10 @@ const Feature = () => {
             color="text-orange-300"
             description="a cross-platform metagame app, turning yor activities
               across Web2 and Web3 games intro a rewarding adventure." 
-            isComingSoon
+           
+            autoPlay
+              muted
+              loop
           />
         </AllodiumTitle>
 
@@ -36,7 +39,11 @@ const Feature = () => {
               title={<><b>d om i u m</b></>}
               color="text-blue-700"
               description="An anime and gaming-inspired NFT collection - 
-                the IP primed for expansion."
+                the IP primed for expansion.
+              "
+              autoPlay
+              muted
+              loop
             />
           </AllodiumTitle>
 
@@ -46,7 +53,11 @@ const Feature = () => {
               title={<><b>p o r t a l</b></>}     
               color="text-violet-900"
               description="A gamified social hub, adding a new dimension of play 
-                to social interaction for Web3 communities."
+                to social interaction for Web3 communities.
+              "
+              autoPlay
+              muted
+              loop
             />
           </AllodiumTitle>
 
@@ -55,6 +66,9 @@ const Feature = () => {
               src="videos/feature-4.mp4"
               title={<><b>a l p h a</b></>}
               color="text-blue-300"
+              loop
+              muted
+              autoPlay
             />
           </AllodiumTitle>
 
@@ -69,7 +83,7 @@ const Feature = () => {
           </AllodiumTitle>
 
           <AllodiumTitle className="bento-title_2">
-            <video className="size-full object-cover object-center"
+            <AllodiumCard className="size-full object-cover object-center"
               src="videos/feature-5.mp4"
               autoPlay
               muted
