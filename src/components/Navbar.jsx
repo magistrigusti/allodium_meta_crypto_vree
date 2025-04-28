@@ -8,10 +8,10 @@ import Button from './Button';
 
 const navItems = [
   { path: '/dominum', icon: '/allodium/icons/dom-link.png' },
-  { path: '/dominarium', icon: '/allodium/icons/allod-link.png' },
-  { path: '/magisterium', icon: '/allodium/icons/allod-link.png' },
-  { path: '/mercatus', icon: '/allodium/icons/allod-link.png' },
-  { path: '/portal', icon: '/allodium/icons/allod-link.png' },
+  // { path: '/dominarium', icon: '/allodium/icons/allod-link.png' },
+  // { path: '/magisterium', icon: '/allodium/icons/allod-link.png' },
+  // { path: '/mercatus', icon: '/allodium/icons/allod-link.png' },
+  // { path: '/portal', icon: '/allodium/icons/allod-link.png' },
 
 ];
 
@@ -64,8 +64,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="fixed inset-x-0 top-4 z-50 h-16 border-none 
-      transition-all duration-700 sm:inset-x-6"
+    <div className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
       ref={navContainerRef}
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
@@ -89,7 +88,7 @@ const Navbar = () => {
             />
           </div>
 
-          <div className="hidden md:flex flex-row items-center">
+          <div className="flex h-full md:flex flex-row items-center">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
@@ -97,7 +96,7 @@ const Navbar = () => {
                   <img
                     src={item.icon}
                     alt="nav-icon"
-                    className={`w-20 h-20 ${isActive ? 'animate-pulse brightness-125' : ''}`}
+                    className={`nav-hover-btn w-20 h-20 ${isActive ? 'animate-pulse brightness-125' : ''}`}
                   />
                 </a>
               )
@@ -111,9 +110,10 @@ const Navbar = () => {
                 src="/audio/loop.mp3"
                 ref={audioElementRef}
                 loop
+                autoPlay
               />
 
-              <img className={`w-10 h-10 ${isAudioPlaying ? 'opacity-100' : 'opacity-50'}`}
+              <img className={`w-20 h-20 ${isAudioPlaying ? 'opacity-100' : 'opacity-80'}`}
                 src="/allodium/icons/music.png" alt="music-icon"
               />
             </button>
