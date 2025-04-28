@@ -18,8 +18,7 @@ const Feature = () => {
           </p>
         </div>
 
-        <div className="border-hsla relative mb-7 h-96 w-full overflowh-hidden 
-          rounded-md md:h-[65vh]"
+        <AllodiumTitle className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]"
         >
           <AllodiumCard src="videos/feature-1.mp4"
             title={<><b>a l l o d i u m</b></>}
@@ -28,13 +27,13 @@ const Feature = () => {
               across Web2 and Web3 games intro a rewarding adventure." 
             isComingSoon
           />
-        </div>
+        </AllodiumTitle>
 
         <div className="grid h-[135vh] grid-cols-2 grid-rows-3 gap-7">
-          <AllodiumTitle className="bento-title_1 row-span-1 md;col-span-1 md:row-span-2">
+          <AllodiumTitle className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <AllodiumCard 
               src="videos/feature-2.mp4 "
-              title={<><b>domium</b></>}
+              title={<><b>d om i u m</b></>}
               color="text-blue-700"
               description="An anime and gaming-inspired NFT collection - 
                 the IP primed for expansion."
@@ -51,10 +50,10 @@ const Feature = () => {
             />
           </AllodiumTitle>
 
-          <AllodiumTitle className="bento-title_1 me-14 md:col-span-1 md:ms-0">
+          <AllodiumTitle className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <AllodiumCard 
               src="videos/feature-4.mp4"
-              title={<><b>alpha</b></>}
+              title={<><b>a l p h a</b></>}
               color="text-blue-300"
             />
           </AllodiumTitle>

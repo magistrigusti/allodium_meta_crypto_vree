@@ -121,7 +121,7 @@ const Hero = () => {
           <video className="absolute left-0 top-0 size-full object-cover object-center"
             src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
             onLoadedData={handleVideoLoad}
-            autoPlay  //all time video playing
+            autoPlay
             loop
             muted
           />

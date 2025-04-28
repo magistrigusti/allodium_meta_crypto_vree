@@ -146,7 +146,7 @@ const Dominum = () => {
               id="watch"
               title="Dominum Game"
               leftIcon={<TiLocationArrowOutline />}
-              onClick={() => window.open('https://t.me/Allodium_MetaGame', '_blank')}
+              onClick={() => window.open('https://t.me/DominumGameBot', '_blank')}
             // открытие в новом окне
             />
 

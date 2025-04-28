@@ -85,6 +85,7 @@ const Navbar = () => {
                 justify-center gap-1"
               title="Products"
               rightIcon={<TiLocationArrowOutline />}
+              onClick={() => window.open('https://t.me/Allodium_MetaGame', '_blank')}
             />
           </div>
 

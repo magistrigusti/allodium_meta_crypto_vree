@@ -1,6 +1,7 @@
 import Feature from '../components/Allodium/Feature';
 import Hero from '../components/Allodium/Hero';
 import About from '../components/Allodium/About';
+import Story from '../components/Allodium/Story';
 
 
 const AllodiumPage = () => {
@@ -9,6 +10,7 @@ const AllodiumPage = () => {
         <Hero />
         <About />
         <Feature />
+        <Story />
       </main>
   );
 };
